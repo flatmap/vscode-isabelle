@@ -1,2 +1,3 @@
-# vscode-languageserver-scala-example
-Sample language server implemented in Scala
+# vscode-isabelle
+
+Isabelle Support for VSCode

@@ -1,38 +1,51 @@
 {
-	"name": "language-client-example",
-	"description": "VSCode part of a language server",
-	"author": "Microsoft Corporation",
+	"name": "vscode-isabelle",
+	"description": "Isabelle integration for VSCode",
+	"author": "Martin Ring",
 	"license": "MIT",
 	"version": "0.0.1",
-	"publisher": "vscode",
+	"publisher": "flatmap",
 	"engines": {
 		"vscode": "^1.4.0"
 	},
 	"categories": [
-		"Other"
+		"Languages","Other"
 	],
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:isabelle"
 	],
 	"main": "./out/src/extension",
 	"contributes": {
+		"languages": [
+			{
+				"id": "isabelle",
+				"aliases": [
+					"Isabelle"
+				],
+				"extensions": [
+					".thy"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "isabelle",
+				"scopeName": "source.isabelle",
+				"path": "./syntaxes/isabelle.json"
+			}
+		],
 		"configuration": {
 			"type": "object",
-			"title": "Example configuration",
+			"title": "Isabelle Configuration",
 			"properties": {
-				"languageServerExample.maxNumberOfProblems": {
-					"type": "number",
-					"default": 100,
-					"description": "Controls the maximum number of problems produced by the server."
-				}
 			}
 		}
-	},	
+	},
 	"scripts": {
 		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install"
-
 	},
 	"devDependencies": {
 		"typescript": "^1.8.9",

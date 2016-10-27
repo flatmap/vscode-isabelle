@@ -12,7 +12,7 @@ import { LanguageClient, LanguageClientOptions, SettingMonitor, ServerOptions, T
 export function activate(context: ExtensionContext) {
 
 	// The server is implemented in scala
-	let serverBin = context.asAbsolutePath(path.join('server', 'bin', 'language-server-example'));
+	let serverBin = context.asAbsolutePath(path.join('server', 'bin', 'vscode-isabelle'));
 	// The debug options for the server
 	let debugOptions = { execArgv: ["--nolazy", "--debug=6004"] };
 
@@ -25,17 +25,22 @@ export function activate(context: ExtensionContext) {
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
-		documentSelector: ['plaintext'],
+		documentSelector: ['isabelle'],
 		synchronize: {
 			// Synchronize the setting section 'languageServerExample' to the server
-			configurationSection: 'languageServerExample',
+			// configurationSection: 'languageServerExample',
 			// Notify the server about file changes to '.clientrc files contain in the workspace
-			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
-		}
+			// fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
+		},
+		diagnosticCollectionName: 'isabelle'
 	}
 
+	let client = new LanguageClient('Isabelle', serverOptions, clientOptions)
+
 	// Create the language client and start the client.
-	let disposable = new LanguageClient('Language Server Example', serverOptions, clientOptions).start();
+	let disposable = client.start();
+
+	client.onNotification
 
 	// Push the disposable to the context's subscriptions so that the
 	// client can be deactivated on extension deactivation

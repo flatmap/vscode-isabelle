@@ -1,0 +1,126 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Isabelle",
+	"scopeName": "source.isabelle",
+	"fileTypes": [".thy"],
+	"uuid": "1a2c0c63-f6c0-4574-95f9-52348365ce40",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#verbatim" },
+		{ "include": "#cartouche" },
+		{ "include": "#strings" },
+		{ "include": "#symbols" },
+		{ "include": "#vars" }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"match": "--.*$",
+					"name": "comment.line.double-dash.isabelle"
+				},
+				{
+					"begin": "\\(\\*",
+					"end": "\\*\\)",
+					"name": "comment.block",
+					"patterns": [
+						{ "include": "#comments" }
+					]
+				}
+			]
+		},
+		"verbatim": {
+			"patterns": [
+				{
+					"begin": "\\{\\*",
+					"end": "\\*\\}",
+					"name": "comment.block.documentation",
+					"patterns": [
+						{ "include": "#verbatim" }
+					]
+				}
+			]
+		},
+		"cartouche": {
+			"patterns": [
+				{
+					"begin": "\\\\<open>",
+					"end": "\\\\<close>",
+					"name": "comment.block.documentation",
+					"patterns": [
+						{ "include": "#cartouche" }
+					]
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"begin": "\\\"",
+					"end": "\\\"",
+					"name": "string.quoted.double"
+				},
+				{
+					"begin": "´",
+					"end": "´",
+					"name": "string.quoted.other"
+				}
+			]
+		},
+		"latin": {
+			"patterns": [
+				{
+					"match": "[a-zA-Z]"
+				}
+			]
+		},
+		"greek": {
+			"patterns": [
+				{
+					"match": "\\<alpha>|\\<beta>|\\<gamma>|\\<delta>|\\<epsilon>|\\<zeta>|\\<eta>|\\<theta>|\\<iota>|\\<kappa>|\\<mu>|\\<nu>|\\<xi>|\\<pi>|\\<rho>|\\<sigma>|\\<tau>|\\<upsilon>|\\<phi>|\\<chi>|\\<psi>|\\<omega>|\\<Gamma>|\\<Delta>|\\<Theta>|\\<Lambda>|\\<Xi>|\\<Pi>|\\<Sigma>|\\<Upsilon>|\\<Phi>|\\<Psi>|\\<Omega>",
+					"name": "constant.character.escape"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"match": "-?[0-9]+.[0-9]+",
+					"name": "constant.numeric.isabelle"
+				},
+				{
+					"match": "[0-9]+",
+					"name": "constant.numeric.isabelle"
+				}
+			]
+		},
+		"symbols": {
+			"patterns": [
+				{
+					"match": "[!#\\$%&\\*\\+\\-/<=>\\?@\\^_\\|~]+",
+					"name": "keyword.operator.symbol.isabelle"
+				},
+				{
+					"match": "\\\\<([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>)([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>|\\\\<\\^sub>|[0-9_'])*>",
+					"name": "keyword.operator.symbol.isabelle"
+				}
+			]
+		},
+		"vars": {
+			"patterns": [
+				{
+					"match": "\\?'([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>)([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>|\\\\<\\^sub>|[0-9_'])*",
+					"name": "entity.name.type.variable.typevar.isabelle"
+				},
+				{
+					"match": "\\?([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>)([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>|\\\\<\\^sub>|[0-9_'])*(\\.[0-9]+)?",
+					"name": "variable.name.isabelle"
+				},
+				{
+					"match": "'([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>)([a-zA-Z]|\\\\<[a-zA-Z]{1,2}>|\\\\<alpha>|\\\\<beta>|\\\\<gamma>|\\\\<delta>|\\\\<epsilon>|\\\\<zeta>|\\\\<eta>|\\\\<theta>|\\\\<iota>|\\\\<kappa>|\\\\<mu>|\\\\<nu>|\\\\<xi>|\\\\<pi>|\\\\<rho>|\\\\<sigma>|\\\\<tau>|\\\\<upsilon>|\\\\<phi>|\\\\<chi>|\\\\<psi>|\\\\<omega>|\\\\<Gamma>|\\\\<Delta>|\\\\<Theta>|\\\\<Lambda>|\\\\<Xi>|\\\\<Pi>|\\\\<Sigma>|\\\\<Upsilon>|\\\\<Phi>|\\\\<Psi>|\\\\<Omega>|\\\\<\\^sub>|[0-9_'])*",
+					"name": "entity.name.type.free.typefree.isabelle"
+				}
+			]
+		}
+	}
+}
